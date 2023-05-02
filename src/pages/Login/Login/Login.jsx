@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
-  //const { signin } = useContext(AuthContext);
+  const { signin } = useContext(AuthContext);
   return (
     <div>
       <form className="flex flex-col gap-4 md:w-1/3 mx-auto">
