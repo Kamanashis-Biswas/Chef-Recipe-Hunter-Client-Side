@@ -13,7 +13,7 @@ const Footer = () => {
                 className="mr-3 h-8 sm:h-9"
                 alt="Logo"
               />
-              <p className="self-center whitespace-nowrap text-xl font-semibold text-white">
+              <p className="self-center whitespace-nowrap text-2xl mb-5 font-semibold text-white">
                 Chef Corner
               </p>
             </div>
@@ -23,13 +23,13 @@ const Footer = () => {
             </p>
           </div>
           <div className="text-white">
-            <h2>Useful Link</h2>
+            <h2 className="text-2xl mb-5">Useful Link</h2>
             <p>About Us</p>
             <p>Our Team</p>
             <p>Find Us</p>
           </div>
           <div className="text-white">
-            <h2>Get In Touch</h2>
+            <h2 className="text-2xl mb-5">Get In Touch</h2>
             <p>phone: (800) 216 2020</p>
             <p>Email: contact@company.com</p>
             <p>Address: No. 12, Ribon Building, Walse street, USA</p>
