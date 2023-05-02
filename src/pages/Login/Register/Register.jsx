@@ -2,6 +2,7 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -15,10 +16,10 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(name, photo, email, password);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
+        updateProfile(result.user, { displayName: name, photoURL: photo });
         console.log(createdUser);
       })
       .catch((error) => {
