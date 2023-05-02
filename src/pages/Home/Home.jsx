@@ -11,11 +11,11 @@ const Home = () => {
       {/* Bannar section */}
       <Bannar></Bannar>
       {/* Cheif Details  */}
-      <div>
-        <h2 className="text-2xl md:text-4xl font-bold my-9 text-center">
+      <div className="p-3">
+        <h2 className="text-2xl md:text-4xl font-bold mt-10 md:mt-20 mb-5 md:mb-10 text-center">
           Cheif Details
         </h2>
-        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 mb-40 gap-7">
           {allCheifDetails &&
             allCheifDetails.map((cheif) => (
               <CheifDetailsCard key={cheif.id} cheif={cheif}></CheifDetailsCard>

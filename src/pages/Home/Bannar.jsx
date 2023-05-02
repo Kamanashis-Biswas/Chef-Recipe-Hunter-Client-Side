@@ -3,11 +3,11 @@ import React from 'react';
 
 const Bannar = () => {
     return (
-        <div>
+        <div className='p-3'>
              <div className="md:flex mt-10">
         <div className="md:w-1/2">
           <div>
-            <h1 className="text-6xl md:text-8xl font-bold mb-4">
+            <h1 className="text-4xl md:text-8xl font-bold mb-4">
               Welcome to Chef&apos;s Corner!
             </h1>
             <p className="text-2xl md:text-4xl mb-6">
