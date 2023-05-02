@@ -51,7 +51,7 @@ const Register = () => {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="photo" value="Your Name" />
+            <Label htmlFor="photo" value="Photo URL" />
           </div>
           <TextInput
             id="photo"
@@ -70,7 +70,7 @@ const Register = () => {
             id="email"
             name="email"
             type="email"
-            placeholder="name@flowbite.com"
+            placeholder="name@company.com"
             required={true}
             shadow={true}
           />
@@ -83,6 +83,7 @@ const Register = () => {
             id="password"
             type="password"
             name="password"
+            placeholder="password"
             required={true}
             shadow={true}
           />
