@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login/Login";
 import Blog from "../pages/Blog/Blog";
 import Register from "../pages/Login/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import ReceipeDetails from "../pages/ReceipeDetails/ReceipeDetails";
 
 /* eslint-disable no-unused-vars */
 const router = createBrowserRouter([
@@ -18,15 +20,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: <Blog></Blog>
+        element: <Blog></Blog>,
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: <Register></Register>,
+      },
+      {
+        path: "/receipedetails",
+        element: (
+          <PrivateRoute>
+            <ReceipeDetails></ReceipeDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

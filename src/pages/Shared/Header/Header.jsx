@@ -11,7 +11,7 @@ const Header = () => {
           <img
             src="https://i.ibb.co/415RpMN/Untitled-1.png"
             className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
+            alt="Logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             Chef Corner

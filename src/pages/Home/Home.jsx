@@ -15,10 +15,12 @@ const Home = () => {
         <h2 className="text-2xl md:text-4xl font-bold my-9 text-center">
           Cheif Details
         </h2>
-        {allCheifDetails.map((cheif) => (
-          <CheifDetailsCard key={cheif.id} cheif={cheif}></CheifDetailsCard>
-        ))}
-        
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {allCheifDetails &&
+            allCheifDetails.map((cheif) => (
+              <CheifDetailsCard key={cheif.id} cheif={cheif}></CheifDetailsCard>
+            ))}
+        </div>
       </div>
     </div>
   );
