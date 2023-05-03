@@ -3,10 +3,16 @@ import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("Register page location", location);
+  const from = location.state?.from?.pathname || "/";
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -21,6 +27,7 @@ const Register = () => {
         const createdUser = result.user;
         updateProfile(result.user, { displayName: name, photoURL: photo });
         console.log(createdUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
