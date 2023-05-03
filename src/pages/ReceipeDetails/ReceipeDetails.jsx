@@ -11,7 +11,7 @@ const ReceipeDetails = () => {
   const { id } = useParams();
   const [chef, setChef] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:5000/chef_details/${id}`)
+    fetch(`https://assignment-10-server-side-kamanashiscse-gmailcom.vercel.app/chef_details/${id}`)
       .then((data) => data.json())
       .then((data) => {
         setChef(data);
@@ -54,6 +54,7 @@ const ReceipeDetails = () => {
         </div>
 
         <Button onClick={notify}>Add to favourite</Button>
+        <ToastContainer />
       </div>
     </div>
   );

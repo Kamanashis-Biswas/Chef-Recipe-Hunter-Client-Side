@@ -70,7 +70,7 @@ const Home = () => {
       </div>
       <div className="mb-20">
         <h2 className="text-2xl md:text-4xl font-bold mt-2 md:mt-20 mb-5 md:mb-10 text-center">
-          Recipe Categories
+          Latest Recipe
         </h2>
         <div className="md:flex gap-10 p-5">
           <Card imgSrc="https://149410494.v2.pressablecdn.com/wp-content/uploads/2020/03/pecan-pie-tart-in-baking-dish-traditional-festive-9WMXQ3Z-1024x573.jpg">
