@@ -13,7 +13,7 @@ const CheifDetailsCard = ({ cheif }) => {
         <p className="text-lg">Year of Exprence:{cheif.years_of_experience}</p>
         <p className="text-lg">Number of Receipe: {cheif.number_of_recipes}</p>
         <p className="text-lg mb-5">Like: {cheif.likes}</p>
-        <Link to={`/receipedetais/${cheif.id}`}>
+        <Link to={`/receipedetails/${cheif.id}`}>
           <Button>View Recipe</Button>
         </Link>
       </div>
