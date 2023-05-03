@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -33,10 +33,10 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/receipedetails",
+        path: "/receipedetails/:id",
         element: (
           <PrivateRoute>
-            <ReceipeDetails></ReceipeDetails>
+            <ReceipeDetails></ReceipeDetails>,
           </PrivateRoute>
         ),
       },

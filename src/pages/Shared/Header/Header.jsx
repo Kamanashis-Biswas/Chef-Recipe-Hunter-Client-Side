@@ -1,15 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const path = useLocation().pathname;
   return (
     <div className="container mx-auto">
       <Navbar fluid={true} rounded={true}>
-        <Navbar.Brand href="/">
+        <Navbar.Brand to="/">
           <img
             src="https://i.ibb.co/415RpMN/Untitled-1.png"
             className="mr-3 h-6 sm:h-9"
@@ -48,13 +49,15 @@ const Header = () => {
           </div>
         )}
         <Navbar.Collapse>
-          <Navbar.Link href="/" active={true}>
+          <Link to="/" className={path === "/" ? "underline" : ""}>
             Home
-          </Navbar.Link>
-          <Navbar.Link href="/blog">Blog</Navbar.Link>
+          </Link>
+          <Link to="/blog" className={path === "/blog" ? "underline" : ""}>
+            Blog
+          </Link>
           {!user && (
-            <Link to="login">
-              <button>Login</button>
+            <Link to="login" className={path === "/login" ? "underline" : ""}>
+              Login
             </Link>
           )}
         </Navbar.Collapse>
