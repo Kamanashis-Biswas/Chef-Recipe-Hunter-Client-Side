@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, Spinner, TextInput } from "flowbite-react";
 import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const { signIn, signInWithGoogle, signInWithGithub } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -12,15 +13,16 @@ const Login = () => {
   console.log("Login page location", location);
   const from = location.state?.from?.pathname || "/";
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const emailRef = useRef();
 
   const handleLogin = (event) => {
     event.preventDefault();
+    setLoading(true);
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    setError('');
+    setError("");
 
     signIn(email, password)
       .then((result) => {
@@ -30,6 +32,7 @@ const Login = () => {
       })
       .catch((error) => {
         setError(error.message);
+        setLoading(false);
       });
   };
 
@@ -98,7 +101,13 @@ const Login = () => {
               <Link>Forget Password?</Link>
             </div>
           </div>
-          <Button type="submit">Login</Button>
+          <Button disabled={loading} type="submit">
+            {loading ? (
+              <Spinner aria-label="Default status example" />
+            ) : (
+              "Login"
+            )}
+          </Button>
           <div className="relative py-2">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-b border-gray-300"></div>
@@ -129,7 +138,8 @@ const Login = () => {
                 <span>Sign in with Google</span>
               </span>
             </button>
-            <button onClick={handleGithubSignIn}
+            <button
+              onClick={handleGithubSignIn}
               type="button"
               className="w-full text-gray-400 hover:text-white border border-gray-400 hover:bg-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >

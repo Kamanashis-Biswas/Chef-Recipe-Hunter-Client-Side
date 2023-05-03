@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, Spinner, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const { createUser } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
 
@@ -18,6 +19,7 @@ const Register = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setLoading(true);
     setError("");
     const form = event.target;
     const name = form.name.value;
@@ -27,12 +29,15 @@ const Register = () => {
 
     if (!/(?=.*[A-Z])/.test(password)) {
       setError("Please add at least one uppercase");
+      setLoading(false);
       return;
     } else if (!/(?=.*[0-9].*[0-9])/.test(password)) {
       setError("Please add at least two numbers");
+      setLoading(false);
       return;
     } else if (password.length < 6) {
       setError("Please add at least 6 characters in your password");
+      setLoading(false);
       return;
     }
 
@@ -45,6 +50,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
   };
 
@@ -125,8 +131,12 @@ const Register = () => {
               </a>
             </Label>
           </div>
-          <Button className="mt-5" disabled={!accepted} type="submit">
-            Register new account
+          <Button className="mt-5 w-[200px]" disabled={!accepted} type="submit">
+          {loading ? (
+              <Spinner aria-label="Default status example" />
+            ) : (
+              "Register new account"
+            )}
           </Button>
           <div className="container mx-auto">
             <p className="text-danger text-center my-4">{error}</p>

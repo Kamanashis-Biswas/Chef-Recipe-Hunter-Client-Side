@@ -19,7 +19,7 @@ const ReceipeDetails = () => {
       <div className="container mx-auto">
         <div className="p-5 mt-10">
           <img className="w-[400px] rounded-2xl mb-3" src={chef && chef.picture} alt="Chef Image" />
-          <h2 className="text-2xl font-bold mb-3">{chef && chef.chef}</h2>
+          <h2 className="text-4xl font-bold mb-3">{chef && chef.chef}</h2>
           <p className="font-semibold text-xl mb-3">{chef && chef.short_bio}</p>
           <div className="flex gap-2">
           <HeartIcon className="w-[20px] mb-3"></HeartIcon>
