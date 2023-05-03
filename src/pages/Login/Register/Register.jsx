@@ -61,6 +61,7 @@ const Register = () => {
   return (
     <div>
       <div className="flex flex-col gap-4 md:w-1/3 mx-auto">
+      <h3 className="text-3xl text-center mt-5">Please Register</h3>
         <form
         className="border p-10 rounded-xl"
           onSubmit={handleRegister}

@@ -160,6 +160,12 @@ const Login = () => {
             <p className="text-danger text-center my-4">{error}</p>
           </div>
         </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   );
