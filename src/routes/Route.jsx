@@ -6,12 +6,14 @@ import Blog from "../pages/Blog/Blog";
 import Register from "../pages/Login/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import ReceipeDetails from "../pages/ReceipeDetails/ReceipeDetails";
+import ErrorPage from "../pages/Error/Error";
 
 /* eslint-disable no-unused-vars */
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

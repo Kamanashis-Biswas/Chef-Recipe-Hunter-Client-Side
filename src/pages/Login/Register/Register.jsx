@@ -9,6 +9,8 @@ const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
 
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
   const location = useLocation();
   console.log("Register page location", location);
@@ -16,11 +18,23 @@ const Register = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setError("");
     const form = event.target;
     const name = form.name.value;
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Please add at least one uppercase");
+      return;
+    } else if (!/(?=.*[0-9].*[0-9])/.test(password)) {
+      setError("Please add at least two numbers");
+      return;
+    } else if (password.length < 6) {
+      setError("Please add at least 6 characters in your password");
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -40,79 +54,85 @@ const Register = () => {
 
   return (
     <div>
-      <form
-        onSubmit={handleRegister}
-        className="flex flex-col gap-4 md:w-1/3 mx-auto"
-      >
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="name" value="Your Name" />
+      <div className="flex flex-col gap-4 md:w-1/3 mx-auto">
+        <form
+        className="border p-10 rounded-xl"
+          onSubmit={handleRegister}
+          
+        >
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="name" value="Your Name" />
+            </div>
+            <TextInput className="mb-5"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Your Name"
+              required={true}
+              shadow={true}
+            />
           </div>
-          <TextInput
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Your Name"
-            required={true}
-            shadow={true}
-          />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="photo" value="Photo URL" />
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="photo" value="Photo URL" />
+            </div>
+            <TextInput className="mb-5"
+              id="photo"
+              name="photo"
+              type="text"
+              placeholder="Photo URL"
+              required={true}
+              shadow={true}
+            />
           </div>
-          <TextInput
-            id="photo"
-            name="photo"
-            type="text"
-            placeholder="Photo URL"
-            required={true}
-            shadow={true}
-          />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="email" value="Your email" />
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="email" value="Your email" />
+            </div>
+            <TextInput className="mb-5"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="name@company.com"
+              required={true}
+              shadow={true}
+            />
           </div>
-          <TextInput
-            id="email"
-            name="email"
-            type="email"
-            placeholder="name@company.com"
-            required={true}
-            shadow={true}
-          />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="password" value="Your password" />
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="password" value="Your password" />
+            </div>
+            <TextInput className="mb-5"
+              id="password"
+              type="password"
+              name="password"
+              placeholder="password"
+              required={true}
+              shadow={true}
+            />
           </div>
-          <TextInput
-            id="password"
-            type="password"
-            name="password"
-            placeholder="password"
-            required={true}
-            shadow={true}
-          />
-        </div>
-        <div></div>
-        <div className="flex items-center gap-2">
-          <Checkbox id="agree" onClick={handleAccepted} />
-          <Label htmlFor="agree">
-            I agree with the
-            <a
-              href="/forms"
-              className="text-blue-600 m-[5px] hover:underline dark:text-blue-500"
-            >
-              terms and conditions
-            </a>
-          </Label>
-        </div>
-        <Button disabled={!accepted} type="submit">
-          Register new account
-        </Button>
-      </form>
+          <div></div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="agree" onClick={handleAccepted} />
+            <Label htmlFor="agree">
+              I agree with the
+              <a
+                href="/forms"
+                className="text-blue-600 m-[5px] hover:underline dark:text-blue-500"
+              >
+                terms and conditions
+              </a>
+            </Label>
+          </div>
+          <Button className="mt-5" disabled={!accepted} type="submit">
+            Register new account
+          </Button>
+          <div className="container mx-auto">
+            <p className="text-danger text-center my-4">{error}</p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

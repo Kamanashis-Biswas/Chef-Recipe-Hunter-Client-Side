@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
-//import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const { signIn, signInWithGoogle, signInWithGithub } =
@@ -13,11 +12,15 @@ const Login = () => {
   console.log("Login page location", location);
   const from = location.state?.from?.pathname || "/";
 
+  const [error, setError] = useState('');
+  const emailRef = useRef();
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    setError('');
 
     signIn(email, password)
       .then((result) => {
@@ -26,7 +29,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
 
@@ -143,6 +146,9 @@ const Login = () => {
           <p className="text-center">
             Don’t have an account yet? <Link to="/register">SignUp</Link>
           </p>
+          <div className="container mx-auto">
+            <p className="text-danger text-center my-4">{error}</p>
+          </div>
         </form>
       </div>
     </div>
