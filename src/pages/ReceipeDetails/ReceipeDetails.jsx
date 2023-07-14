@@ -11,7 +11,7 @@ const ReceipeDetails = () => {
   const { id } = useParams();
   const [chef, setChef] = useState(null);
   useEffect(() => {
-    fetch(`https://assignment-10-server-side-kamanashiscse-gmailcom.vercel.app/chef_details/${id}`)
+    fetch(`https://assignment-10-server-side-mauve.vercel.app/chef_details/${id}`)
       .then((data) => data.json())
       .then((data) => {
         setChef(data);

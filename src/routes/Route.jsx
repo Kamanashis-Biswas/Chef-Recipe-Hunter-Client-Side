@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://assignment-10-server-side-kamanashiscse-gmailcom.vercel.app/all_chef_details"),
+        loader: () => fetch("https://assignment-10-server-side-mauve.vercel.app/all_chef_details"),
       },
       {
         path: "/blog",
